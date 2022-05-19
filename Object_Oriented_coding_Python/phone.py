@@ -6,6 +6,8 @@ so here broken_phones etc are new methods
 
 
 class Phone(Item):  # Inheriting class Item
+    pay_rate = 0.5
+
     def __init__(self, name: str, price: float, quantity=0, broken_phones=0):
         # Call to super function to have access to all attributes / methods.Super function allows
         # us tto have attribute access from parent classes

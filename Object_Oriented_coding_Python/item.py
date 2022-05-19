@@ -15,12 +15,16 @@ class Item:
         assert quantity >= 0, f"Quantity {quantity} is not greater than zero!"
 
         # Assign to self object
-        self.__name = name # double __ makes the attribute inaccessible like private thing in oops
-        self.price = price
+        self.__name = name  # double __ makes the attribute inaccessible like private thing in oops
+        self.__price = price
         self.quantity = quantity
 
         # Assign to execute
         Item.all.append(self)
+
+    @property
+    def price(self):
+        return self.__price
 
     @property
     # Property Decorator = Read-only Attribute
@@ -35,7 +39,7 @@ class Item:
             self.__name = value
 
     def __repr__(self):
-        return f"Item('{self.name}', {self.price}, {self.quantity})"
+        return f"Item('{self.name}', {self.__price}, {self.quantity})"
 
     """
     Advantage of magic method innit:
@@ -57,7 +61,7 @@ class Item:
     """
 
     def calculate_total_price(self):
-        return self.price * self.quantity
+        return self.__price * self.quantity
 
     @classmethod
     def instantiate_from_csv(cls):
@@ -85,10 +89,10 @@ class Item:
             return False
 
     def apply_discount(self):
-        self.price = self.price * self.pay_rate
+        self.__price = self.__price * self.pay_rate
 
-
-print(Item.is_integer(7))
+    def apply_increment(self, increment_value):
+        self.__price = self.__price + self.__price * increment_value
 
 # item1 = Item("Phone", 100, 1)
 # item1.apply_discount()

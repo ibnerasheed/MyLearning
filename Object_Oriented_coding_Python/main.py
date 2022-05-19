@@ -1,13 +1,18 @@
 
-from item import Item
+from phone import Phone
+from keyboard import Keyboard
 
-item1 = Item("MyItem", 750)
+item1 = Keyboard("jscKeyboard", 1000, 3)
 
-# Setting an Attribute
-item1.name = "OtherItem"
+item1.apply_discount()
 
-# Getting an Attribute
-print(item1.name)
+print(item1.price)
+
+"""
+abstraction is used to hide unnecessary information from instances.also done by __ 
+
+"""
+
 
 
 
