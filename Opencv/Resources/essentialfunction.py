@@ -3,34 +3,41 @@ import cv2 as cv
 
 
 
+
 # Read in an image
-img = cv.imread(r"C:\Users\ibner\MyLearning\Opencv\Resources\Photos\cat_large.jpg")
-cv.imshow('cat', img)
+img = cv.imread(r"C:\Users\ibner\MyLearning\Opencv\Resources\Photos\park.jpg")
+cv.imshow('Boston', img)
 
-# Converting to grayscale
-gray = cv.cvtColor(img, cv.COLOR_BGR2GRAY)
-cv.imshow('Gray', gray)
+# # Converting to grayscale
+# gray = cv.cvtColor(img, cv.COLOR_BGR2GRAY)
+# cv.imshow('Gray', gray)
 
-# Blur 
-blur = cv.GaussianBlur(img, (7,7), cv.BORDER_DEFAULT)
+
+
+# # Blur = remove noises
+blur = cv.GaussianBlur(img, (7,7), cv.BORDER_DEFAULT) #(7,7) always in odd number,more number more blur)
 cv.imshow('Blur', blur)
 
-# Edge Cascade
+# # # Edge Cascade
 canny = cv.Canny(blur, 125, 175)
 cv.imshow('Canny Edges', canny)
 
-# Dilating the image
+
+
+# # Dilating the image
 dilated = cv.dilate(canny, (7,7), iterations=3)
 cv.imshow('Dilated', dilated)
 
-# Eroding
+# # Eroding 
 eroded = cv.erode(dilated, (7,7), iterations=3)
 cv.imshow('Eroded', eroded)
 
-# Resize
+# # Resize,cubic slowest amongst all,but better result
 resized = cv.resize(img, (500,500), interpolation=cv.INTER_CUBIC)
 cv.imshow('Resized', resized)
 
-# Cropping
+# # Cropping
 cropped = img[50:200, 200:400]
 cv.imshow('Cropped', cropped)
+
+cv.waitKey(0)
