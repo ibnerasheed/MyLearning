@@ -1,0 +1,12 @@
+{
+	"input_for_first_nn": {
+		"input_csv": "data.csv",
+		"first_input_ param": null,
+		"second_input_param": null,
+		"learning_rate": 0.01,
+        "layers" : 28,
+		"output_csv": "output.csv"
+	}
+
+
+}
